@@ -37,9 +37,8 @@ namespace CAArtStudio.Model
         public string Tags { get; set; }
 
         public bool? IsPopular { get; set; }
-
-        [StringLength(10)]
-        public string ViewCount { get; set; }
+		
+        public int ViewCount { get; set; }
 
         public bool IsActive { get; set; }
 

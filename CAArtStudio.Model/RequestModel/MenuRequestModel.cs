@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 
 namespace CAArtStudio.Model.ResponseModel
 {
-	public class MenuRequestViewModel: Auditable
+	public class MenuRequestModel: Auditable
 	{
 		public string Text { get; set; }
-
 		public int? ParentID { get; set; }
-
 		public string Url { get; set; }
-
 		public string Target { get; set; }
-
 		public int? DisplayOrder { get; set; }
-
 		public bool ShowOnHome { get; set; }
 	}
 }

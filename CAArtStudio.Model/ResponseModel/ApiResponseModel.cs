@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CAArtStudio.Model.ResponseModel
 {
-	public class ApiResponseViewModel
+	public class ApiResponseModel
 	{
 		public int Code { get; set; }
 		public string Message { get; set; }

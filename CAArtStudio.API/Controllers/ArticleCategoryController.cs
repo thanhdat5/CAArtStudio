@@ -13,16 +13,16 @@ using System.Web.Http;
 
 namespace CAArtStudio.API.Controllers
 {
-	[RoutePrefix("api/Menus")]
-	public class MenuController : ApiControllerBase
+	[RoutePrefix("api/ArticleCategories")]
+	public class ArticleCategoryController : ApiControllerBase
 	{
 		#region Initialize
-		private IMenuService _MenuService;
+		private IArticleCategoryService _ArticleCategoryService;
 
-		public MenuController(IErrorService errorService, IMenuService MenuService)
+		public ArticleCategoryController(IErrorService errorService, IArticleCategoryService ArticleCategoryService)
 			: base(errorService)
 		{
-			this._MenuService = MenuService;
+			this._ArticleCategoryService = ArticleCategoryService;
 		}
 
 		#endregion
@@ -35,7 +35,7 @@ namespace CAArtStudio.API.Controllers
 			//{
 			//	return CommonConstants.accessDenied;
 			//}
-			return _MenuService.GetAll();
+			return _ArticleCategoryService.GetAll();
 		}
 
 		[Route("getallwithpaging")]
@@ -46,7 +46,7 @@ namespace CAArtStudio.API.Controllers
 			//{
 			//	return CommonConstants.accessDenied;
 			//}
-			return _MenuService.GetAllWithPagging(page, pageSize);
+			return _ArticleCategoryService.GetAllWithPagging(page, pageSize);
 		}
 
 		[Route("getbyid/{id:int}")]
@@ -57,29 +57,29 @@ namespace CAArtStudio.API.Controllers
 			//{
 			//	return CommonConstants.accessDenied;
 			//}
-			return _MenuService.GetById(id);
+			return _ArticleCategoryService.GetById(id);
 		}
 
 		[Route("create")]
 		[HttpPost]
-		public ApiResponseModel Create(Menu obj)
+		public ApiResponseModel Create(ArticleCategory obj)
 		{
 			//if (HttpContext.Current.Session["UserLogged"] == null)
 			//{
 			//	return CommonConstants.accessDenied;
 			//}
-			return _MenuService.Add(obj);
+			return _ArticleCategoryService.Add(obj);
 		}
 
 		[Route("update")]
 		[HttpPut]
-		public ApiResponseModel Update(Menu obj)
+		public ApiResponseModel Update(ArticleCategory obj)
 		{
 			//if (HttpContext.Current.Session["UserLogged"] == null)
 			//{
 			//	return CommonConstants.accessDenied;
 			//}
-			return _MenuService.Update(obj);
+			return _ArticleCategoryService.Update(obj);
 		}
 
 		[Route("delete/{id:int}")]
@@ -90,7 +90,7 @@ namespace CAArtStudio.API.Controllers
 			//{
 			//	return CommonConstants.accessDenied;
 			//}
-			return _MenuService.Delete(id);
+			return _ArticleCategoryService.Delete(id);
 		}
 	}
 }

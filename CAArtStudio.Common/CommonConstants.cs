@@ -21,7 +21,7 @@ namespace CAArtStudio.Common
         public const string NotFoundMessage = "Data not found.";
 
 
-        public static ApiResponseViewModel accessDenied = new ApiResponseViewModel
+        public static ApiResponseModel accessDenied = new ApiResponseModel
         {
             Code = 999,
             Message = "Access Denied.",

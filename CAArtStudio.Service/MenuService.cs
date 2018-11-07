@@ -11,17 +11,17 @@ namespace CAArtStudio.Service
 {
 	public interface IMenuService
 	{
-		ApiResponseViewModel GetAll();
+		ApiResponseModel GetAll();
 
-		ApiResponseViewModel GetAllWithPagging(int? page, int pageSize);
+		ApiResponseModel GetAllWithPagging(int? page, int pageSize);
 
-		ApiResponseViewModel GetById(int id);
+		ApiResponseModel GetById(int id);
 
-		ApiResponseViewModel Add(Menu Menu);
+		ApiResponseModel Add(Menu Menu);
 
-		ApiResponseViewModel Update(Menu Menu);
+		ApiResponseModel Update(Menu Menu);
 
-		ApiResponseViewModel Delete(int id);
+		ApiResponseModel Delete(int id);
 
 	}
 
@@ -46,10 +46,10 @@ namespace CAArtStudio.Service
 		/// Get all Menu
 		/// </summary>
 		/// <returns></returns>
-		public ApiResponseViewModel GetAll()
+		public ApiResponseModel GetAll()
 		{
-			var result = new List<MenuResponseViewModel>();
-			var response = new ApiResponseViewModel
+			var result = new List<MenuResponseModel>();
+			var response = new ApiResponseModel
 			{
 				Code = CommonConstants.ApiResponseSuccessCode,
 				Message = null,
@@ -61,7 +61,7 @@ namespace CAArtStudio.Service
 				result = _MenuRepository
 					.GetAll()
 					.Where(m => m.IsDeleted != true)
-					.Select(m => new MenuResponseViewModel
+					.Select(m => new MenuResponseModel
 					{
 						ID = m.ID,
 						Text = m.Text,
@@ -73,10 +73,10 @@ namespace CAArtStudio.Service
 						ShowOnHome = m.ShowOnHome,
 						Created = m.Created,
 						CreatedBy = m.CreatedBy,
-						CreatedByName = _UserRepository.GetSingleById(m.CreatedBy).FullName,
+						//CreatedByName = _UserRepository.GetSingleById(m.CreatedBy).FullName,
 						Modified = m.Modified,
 						ModifiedBy = m.ModifiedBy,
-						ModifiedByName = _UserRepository.GetSingleById(m.ModifiedBy).FullName,
+						//ModifiedByName = _UserRepository.GetSingleById(m.ModifiedBy).FullName,
 					}).ToList();
 				response.Result = result;
 			}
@@ -94,11 +94,11 @@ namespace CAArtStudio.Service
 		/// <param name="page">Current page</param>
 		/// <param name="pageSize">Page size</param>
 		/// <returns></returns>
-		public ApiResponseViewModel GetAllWithPagging(int? page, int pageSize)
+		public ApiResponseModel GetAllWithPagging(int? page, int pageSize)
 		{
-			var result = new List<MenuResponseViewModel>();
+			var result = new List<MenuResponseModel>();
 			var paginationSet = new PaginationSet<Menu>();
-			var response = new ApiResponseViewModel
+			var response = new ApiResponseModel
 			{
 				Code = CommonConstants.ApiResponseSuccessCode,
 				Message = null,
@@ -112,7 +112,7 @@ namespace CAArtStudio.Service
 				var query = _MenuRepository
 					.GetAll()
 					.Where(m => m.IsDeleted != true)
-					.Select(m => new MenuResponseViewModel
+					.Select(m => new MenuResponseModel
 					{
 						ID = m.ID,
 						Text = m.Text,
@@ -124,10 +124,10 @@ namespace CAArtStudio.Service
 						ShowOnHome = m.ShowOnHome,
 						Created = m.Created,
 						CreatedBy = m.CreatedBy,
-						CreatedByName = _UserRepository.GetSingleById(m.CreatedBy).FullName,
+						//CreatedByName = _UserRepository.GetSingleById(m.CreatedBy).FullName,
 						Modified = m.Modified,
 						ModifiedBy = m.ModifiedBy,
-						ModifiedByName = _UserRepository.GetSingleById(m.ModifiedBy).FullName,
+						//ModifiedByName = _UserRepository.GetSingleById(m.ModifiedBy).FullName,
 					});
 				totalRow = query.Count();
 
@@ -157,9 +157,9 @@ namespace CAArtStudio.Service
 		/// </summary>
 		/// <param name="id">ID of Menu</param>
 		/// <returns></returns>
-		public ApiResponseViewModel GetById(int id)
+		public ApiResponseModel GetById(int id)
 		{
-			var response = new ApiResponseViewModel
+			var response = new ApiResponseModel
 			{
 				Code = CommonConstants.ApiResponseSuccessCode,
 				Message = null,
@@ -171,7 +171,7 @@ namespace CAArtStudio.Service
 				var m = _MenuRepository.GetSingleById(id);
 				if (m != null && !m.IsDeleted)
 				{
-					var result = new MenuResponseViewModel
+					var result = new MenuResponseModel
 					{
 						ID = m.ID,
 						Text = m.Text,
@@ -183,10 +183,10 @@ namespace CAArtStudio.Service
 						ShowOnHome = m.ShowOnHome,
 						Created = m.Created,
 						CreatedBy = m.CreatedBy,
-						CreatedByName = _UserRepository.GetSingleById(m.CreatedBy).FullName,
+						//CreatedByName = _UserRepository.GetSingleById(m.CreatedBy).FullName,
 						Modified = m.Modified,
 						ModifiedBy = m.ModifiedBy,
-						ModifiedByName = _UserRepository.GetSingleById(m.ModifiedBy).FullName,
+						//ModifiedByName = _UserRepository.GetSingleById(m.ModifiedBy).FullName,
 					};
 					response.Result = result;
 				}
@@ -210,9 +210,9 @@ namespace CAArtStudio.Service
 		/// </summary>
 		/// <param name="obj">Menu</param>
 		/// <returns></returns>
-		public ApiResponseViewModel Add(Menu obj)
+		public ApiResponseModel Add(Menu obj)
 		{
-			var response = new ApiResponseViewModel
+			var response = new ApiResponseModel
 			{
 				Code = CommonConstants.ApiResponseSuccessCode,
 				Message = null,
@@ -221,6 +221,7 @@ namespace CAArtStudio.Service
 
 			try
 			{
+				obj.IsDeleted = false;
 				obj.Created = DateTime.Now;
 				obj.CreatedBy = 1;//xxx
 				obj.Modified = DateTime.Now;
@@ -244,9 +245,9 @@ namespace CAArtStudio.Service
 		/// </summary>
 		/// <param name="obj">New Menu</param>
 		/// <returns></returns>
-		public ApiResponseViewModel Update(Menu obj)
+		public ApiResponseModel Update(Menu obj)
 		{
-			var response = new ApiResponseViewModel
+			var response = new ApiResponseModel
 			{
 				Code = CommonConstants.ApiResponseSuccessCode,
 				Message = null,
@@ -268,7 +269,7 @@ namespace CAArtStudio.Service
 					exists.ModifiedBy = 1;//xxx
 					_MenuRepository.Update(exists);
 					_UnitOfWork.Commit();
-					response = GetById(exists.ID);
+					response.Result = exists;
 					response.Message = CommonConstants.SaveSuccess;
 				}
 				else
@@ -292,10 +293,10 @@ namespace CAArtStudio.Service
 		/// </summary>
 		/// <param name="id">ID of Menu</param>
 		/// <returns></returns>
-		public ApiResponseViewModel Delete(int id)
+		public ApiResponseModel Delete(int id)
 		{
 			var result = new Menu();
-			var response = new ApiResponseViewModel
+			var response = new ApiResponseModel
 			{
 				Code = CommonConstants.ApiResponseSuccessCode,
 				Message = null,

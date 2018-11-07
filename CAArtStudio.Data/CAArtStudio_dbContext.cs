@@ -33,10 +33,6 @@ namespace CAArtStudio.Model
 				.Property(e => e.MetaTitle)
 				.IsUnicode(false);
 
-			modelBuilder.Entity<Article>()
-				.Property(e => e.ViewCount)
-				.IsFixedLength();
-
 			modelBuilder.Entity<ArticleCategory>()
 				.Property(e => e.MetaTitle)
 				.IsUnicode(false);
@@ -49,10 +45,6 @@ namespace CAArtStudio.Model
 			modelBuilder.Entity<Course>()
 				.Property(e => e.MetaTitle)
 				.IsUnicode(false);
-
-			modelBuilder.Entity<Course>()
-				.Property(e => e.ViewCount)
-				.IsFixedLength();
 
 			modelBuilder.Entity<Course>()
 				.HasMany(e => e.CourseFeedbacks)
