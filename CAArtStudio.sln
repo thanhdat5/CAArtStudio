@@ -3,7 +3,49 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAArtStudio.API", "CAArtStudio.API\CAArtStudio.API.csproj", "{D590917B-E427-4F3D-9048-982ED4B1D2A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAArtStudio.Tests", "CAArtStudio.Tests\CAArtStudio.Tests.csproj", "{F887B472-FEB6-4C15-BA44-9276B9F6A7E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAArtStudio.Data", "CAArtStudio.Data\CAArtStudio.Data.csproj", "{59ED4F99-217A-4627-B31D-616BE66FFF02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAArtStudio.Service", "CAArtStudio.Service\CAArtStudio.Service.csproj", "{1EB99F5B-38A4-475F-BC4E-648A3DCB835C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAArtStudio.Common", "CAArtStudio.Common\CAArtStudio.Common.csproj", "{A8D1830D-BD01-4985-8EC0-5C70BB6281C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAArtStudio.Model", "CAArtStudio.Model\CAArtStudio.Model.csproj", "{2052F80D-77FB-461A-9391-BC6E432BE20B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D590917B-E427-4F3D-9048-982ED4B1D2A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D590917B-E427-4F3D-9048-982ED4B1D2A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D590917B-E427-4F3D-9048-982ED4B1D2A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D590917B-E427-4F3D-9048-982ED4B1D2A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F887B472-FEB6-4C15-BA44-9276B9F6A7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F887B472-FEB6-4C15-BA44-9276B9F6A7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F887B472-FEB6-4C15-BA44-9276B9F6A7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F887B472-FEB6-4C15-BA44-9276B9F6A7E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59ED4F99-217A-4627-B31D-616BE66FFF02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59ED4F99-217A-4627-B31D-616BE66FFF02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59ED4F99-217A-4627-B31D-616BE66FFF02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59ED4F99-217A-4627-B31D-616BE66FFF02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB99F5B-38A4-475F-BC4E-648A3DCB835C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB99F5B-38A4-475F-BC4E-648A3DCB835C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB99F5B-38A4-475F-BC4E-648A3DCB835C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB99F5B-38A4-475F-BC4E-648A3DCB835C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8D1830D-BD01-4985-8EC0-5C70BB6281C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8D1830D-BD01-4985-8EC0-5C70BB6281C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8D1830D-BD01-4985-8EC0-5C70BB6281C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8D1830D-BD01-4985-8EC0-5C70BB6281C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2052F80D-77FB-461A-9391-BC6E432BE20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2052F80D-77FB-461A-9391-BC6E432BE20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2052F80D-77FB-461A-9391-BC6E432BE20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2052F80D-77FB-461A-9391-BC6E432BE20B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
